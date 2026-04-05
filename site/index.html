@@ -399,7 +399,7 @@
     else{
       readC.innerHTML=`<div class="loading-indicator"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>`;
       try{
-        const r=await fetch(RAW+encodeURIComponent(ch.file)+'?'+CACHE_BUST);
+        const r=await fetch(RAW+ch.file+'?'+CACHE_BUST);
         if(!r.ok)throw 0;
         const md=await r.text();cache.set(id,md);if(curId===id)render(md);
       }catch(e){readC.innerHTML=`<p style="color:var(--text-muted);text-align:center;padding:4rem 0">불러올 수 없습니다.</p>`}
@@ -414,6 +414,22 @@
     html=restoreMath(html);
     readC.innerHTML=html;
     renderMathInElement(readC,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+    // Intercept internal md links
+    readC.querySelectorAll('a[href]').forEach(a=>{
+      const href=a.getAttribute('href');
+      if(!href)return;
+      // Match patterns like ../chapters/ch02-finance-basics.md or dissect-01-intro.md
+      const m=href.match(/(?:\.\.\/)?(?:chapters|dissect)\/(.+)\.md/)||href.match(/(dissect-\d+[^.]*|ch\d+[^.]*)\.md/);
+      if(m){
+        const fname=m[1]||m[0];
+        // Find matching chapter
+        const ch=CHAPTERS.find(c=>c.file.includes(fname));
+        if(ch){
+          a.style.cursor='pointer';
+          a.onclick=e=>{e.preventDefault();openCh(ch.id)};
+        }
+      }
+    });
   }
 
   function nav(i){
