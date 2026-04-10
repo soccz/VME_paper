@@ -2,3 +2,6 @@ ValMomEverywhere.pdf
 quality-assurance-analysis.md
 .claude/
 images/
+__pycache__/
+data/ff25_tmp/
+data/ff_factors_tmp/
