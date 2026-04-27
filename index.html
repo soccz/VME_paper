@@ -157,24 +157,33 @@
       .toc-drawer{width:280px}
       .layer-toggle{flex-direction:column;gap:.4rem}
     }
-    /* Site Header — portfolio home / GitHub */
-    .site-header{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:rgba(250,250,249,0.82);border-bottom:1px solid var(--border);padding:10px 22px;display:flex;align-items:center;justify-content:space-between;font-size:.85rem}
-    .site-header a{color:var(--text-primary);text-decoration:none;transition:color .18s}
-    .site-header .home{display:inline-flex;align-items:center;gap:8px;font-weight:600}
-    .site-header .home svg{stroke-width:2.2}
-    .site-header .home:hover, .site-header .gh:hover{color:var(--accent)}
-    .site-header .gh{color:var(--text-secondary);font-size:.78rem;letter-spacing:.02em}
-    @media(max-width:480px){.site-header{padding:8px 14px;font-size:.78rem}.site-header .gh{font-size:.72rem}}
+    /* Site Header — same pattern as python-why / AP_CSA */
+    .site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,249,0.85);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);transition:background-color .3s,border-color .3s}
+    .header-inner{max-width:860px;margin:0 auto;padding:12px clamp(16px,4vw,32px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .home-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;color:var(--text-muted);text-decoration:none;transition:all .2s;flex-shrink:0}
+    .home-btn:hover{background:var(--bg-tint);color:var(--accent)}
+    .site-title{font-size:clamp(.95rem,2.5vw,1.1rem);font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+    .site-title:hover{opacity:.8;color:var(--accent)}
+    .header-nav{display:flex;align-items:center;gap:8px}
+    .nav-btn{background:var(--bg-tint);border:1px solid var(--border);border-radius:8px;padding:7px 16px;color:var(--text-secondary);font-size:.82rem;font-weight:500;text-decoration:none;transition:all .25s;white-space:nowrap}
+    .nav-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 8px rgba(45,106,79,.12);transform:translateY(-1px)}
+    @media(max-width:480px){.header-inner{padding:10px 14px;gap:8px}.nav-btn{padding:6px 12px;font-size:.75rem}}
   </style>
 </head>
 <body>
 
 <header class="site-header">
-  <a class="home" href="https://soccz.github.io" title="포트폴리오 홈" aria-label="포트폴리오 홈">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>VME Paper</span>
-  </a>
-  <a class="gh" href="https://github.com/soccz/VME_paper" target="_blank" rel="noopener">GitHub &rarr;</a>
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://soccz.github.io" class="home-btn" title="포트폴리오 홈" aria-label="포트폴리오 홈">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </a>
+      <a href="index.html" class="site-title">VME Paper</a>
+    </div>
+    <div class="header-nav">
+      <a href="https://github.com/soccz/VME_paper" target="_blank" rel="noopener" class="nav-btn">GitHub</a>
+    </div>
+  </div>
 </header>
 
 <div id="progress-bar"></div>
