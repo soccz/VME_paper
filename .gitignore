@@ -5,3 +5,16 @@ images/
 __pycache__/
 data/ff25_tmp/
 data/ff_factors_tmp/
+
+# 결과물·발표 준비 (사이트 본질은 site/ 폴더의 이론 콘텐츠만)
+/1.txt
+/cap/
+/test/
+/presentation/data
+/presentation/submit/
+/presentation/confused_points.md
+/presentation/factcheck.md
+/presentation/review_10x10.md
+/presentation/korea_full_test.py
+/presentation/korea_momentum.py
+/presentation/korea_momentum_results.json
